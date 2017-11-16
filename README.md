@@ -1,1 +1,52 @@
-# spec-tp
+Bienvenue
+
+Ceci est un fichier lisez-moi pour la remise 2 du tp1 de l'hiver 2017
+Spécifications formelles et vérifications logiciels
+
+Équipe #4
+
+
+EXÉCUTION DU CODE
+
+Pour l'exécution du code nous vous avons remis un fichier .jar qui 
+permet de lancer notre programme tout simplement en double cliquant sur celui-ci.
+
+Nous vous avons aussi remis l'entièreté du projet éclipse que vous pourrez 
+importer dans éclipse pour l'exécuter via le bouton "Run" fourni par le logiciel éclipse.
+
+En démarrant le programme, les paramètres déterminant le nombre de trains sur chaque ligne
+comme demandé dans l'énoncé du travail. Ensuite la simulation débutera automatiquement.
+
+
+INTERPRÉTATION DES SORTIES
+
+"Train (ligne) - (identifiant de train) est en panne." 
+-Le train spécifié est en panne
+
+"Train (ligne) - (identifiant de train) est réparé." 
+-Le train spécifié est réparé
+
+"Train (ligne) - (identifiant de train) entre dans le tronçon (nom du tronçon)"
+-Le train spécifié entre dans le tronçon partagé spécifié.
+
+"Train (ligne) - (identifiant de train) sort du tronçon (nom du tronçon)"
+-Le train spécifié sort du tronçon partagé spécifié.
+
+"Train (ligne) - (identifiant de train) a un délai de 1 seconde." 
+-Le train spécifié a un délai d'attente de 1 seconde.
+
+
+PANNE, RÉPARATION ET DÉLAI
+Comme il n'y avait rien de spécifié dans l'énoncé en rapport avec la simulation de panne et de délai,
+nous avons programmé une fonction aléatoire qui déclanche pour chaque train, selon une probabilité, un délai ou une panne.
+
+
+
+
+
+
+
+
+
+
+
