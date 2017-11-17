@@ -16,21 +16,21 @@ public class TronconABC {
     if (train.getClass().getSimpleName().equals("TrainA")) {
       if (nextTrainToEnterB == nextTrainToExitB && nextTrainToEnterC == nextTrainToExitC) {
         if (nextTrainToEnterA == train.getId()) {
-          System.out.println("Train A-" + train.getId() + " entre dans le tronconABC");
+          System.out.println("TrainA - " + train.getId() + " entre dans le tronconABC");
           return true;
         }
       }
     } else if (train.getClass().getSimpleName().equals("TrainB")) {
       if (nextTrainToEnterA == nextTrainToExitA && nextTrainToEnterC == nextTrainToExitC) {
         if (nextTrainToEnterB == train.getId()) {
-          System.out.println("Train B-" + train.getId() + " entre dans le tronconABC");
+          System.out.println("TrainB - " + train.getId() + " entre dans le tronconABC");
           return true;
         }
       }
     } else {
       if (nextTrainToEnterA == nextTrainToExitA && nextTrainToEnterB == nextTrainToExitB) {
         if (nextTrainToEnterC == train.getId()) {
-          System.out.println("Train C-" + train.getId() + " entre dans le tronconABC");
+          System.out.println("TrainC - " + train.getId() + " entre dans le tronconABC");
           return true;
         }
       }
@@ -41,17 +41,17 @@ public class TronconABC {
   public static boolean canExit(Train train) {
     if (train.getClass().getSimpleName().equals("TrainA")) {
       if (nextTrainToExitA == train.getId()) {
-        System.out.println("Train A-" + train.getId() + " sort du tronconABC");
+        System.out.println("TrainA - " + train.getId() + " sort du tronconABC");
         return true;
       }
     } else if (train.getClass().getSimpleName().equals("TrainB")) {
       if (nextTrainToExitB == train.getId()) {
-        System.out.println("Train B-" + train.getId() + " sort du tronconABC");
+        System.out.println("TrainB - " + train.getId() + " sort du tronconABC");
         return true;
       }
     } else {
       if (nextTrainToExitC == train.getId()) {
-        System.out.println("Train C-" + train.getId() + " sort du tronconABC");
+        System.out.println("TrainC - " + train.getId() + " sort du tronconABC");
         return true;
       }
     }

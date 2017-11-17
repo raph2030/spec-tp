@@ -14,14 +14,14 @@ public class TronconBC {
     if (train.getClass().getSimpleName().equals("TrainB")) {
       if (nextTrainToEnterC == nextTrainToExitC) {
         if (nextTrainToEnterB == train.getId()) {
-          System.out.println("Train B-" + train.getId() + " entre dans le tronconBC");
+          System.out.println("TrainB - " + train.getId() + " entre dans le tronconBC");
           return true;
         }
       }
     } else {
       if (nextTrainToEnterB == nextTrainToExitB) {
         if (nextTrainToEnterC == train.getId()) {
-          System.out.println("Train C-" + train.getId() + " entre dans le tronconBC");
+          System.out.println("TrainC - " + train.getId() + " entre dans le tronconBC");
           return true;
         }
       }
@@ -32,12 +32,12 @@ public class TronconBC {
   private static boolean canExit(Train train) {
     if (train.getClass().getSimpleName().equals("TrainB")) {
       if (nextTrainToExitB == train.getId()) {
-        System.out.println("Train B-" + train.getId() + " sort du tronconBC");
+        System.out.println("TrainB - " + train.getId() + " sort du tronconBC");
         return true;
       }
     } else {
       if (nextTrainToExitC == train.getId()) {
-        System.out.println("Train C-" + train.getId() + " sort du tronconBC");
+        System.out.println("TrainC - " + train.getId() + " sort du tronconBC");
         return true;
       }
     }

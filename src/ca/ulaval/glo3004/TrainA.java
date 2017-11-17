@@ -14,9 +14,9 @@ public class TrainA implements Runnable, Train {
       checkBroken(this);
 
       TronconAB.addTrainA(this);
-      Thread.sleep(200);
+      Thread.sleep(1000);
       TronconAB.removeTrainA(this);
-      Thread.sleep(200);
+      Thread.sleep(1000);
 
       checkDelay(this);
       checkBroken(this);
@@ -25,6 +25,7 @@ public class TrainA implements Runnable, Train {
       Thread.sleep(200);
       TronconABC.removeTrainA(this);
       Thread.sleep(200);
+      
     } catch (Exception e) {
       System.out.println("Something went wrong.");
       System.out.println(e);

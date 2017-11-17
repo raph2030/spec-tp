@@ -3,25 +3,39 @@ package ca.ulaval.glo3004;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+
 public class TronconAB {
   public static final Lock lockAB = new ReentrantLock();
   private static int nextTrainToEnterA = 0;
   private static int nextTrainToExitA = 0;
   private static int nextTrainToEnterB = 0;
   private static int nextTrainToExitB = 0;
+  
+  private static boolean nextBAskedToEnter = true;
+  
+  
+  public static void cancelBFirstToStart() {
+	  nextBAskedToEnter = false;
+  }
 
   private static boolean canEnter(Train train) {
     if (train.getClass().getSimpleName().equals("TrainA")) {
-      if (nextTrainToEnterB == nextTrainToExitB) {
-        if (nextTrainToEnterA == train.getId()) {
-          System.out.println("Train A-" + train.getId() + " entre dans le tronconAB");
-          return true;
+		if(nextBAskedToEnter) {//faut laisser priorité au Train B qui veut rentrer
+			return false;
+		}
+        if (nextTrainToEnterB == nextTrainToExitB) {
+          if (nextTrainToEnterA == train.getId()) {
+	          
+	          System.out.println("TrainA - " + train.getId() + " entre dans le tronconAB");
+	          return true;
+	      }
         }
-      }
     } else {
-      if (nextTrainToEnterA == nextTrainToExitA) {
-        if (nextTrainToEnterB == train.getId()) {
-          System.out.println("Train B-" + train.getId() + " entre dans le tronconAB");
+      if (nextTrainToEnterB == train.getId()) {
+    	  nextBAskedToEnter = true;
+    	if (nextTrainToEnterA == nextTrainToExitA) {
+        
+          System.out.println("TrainB - " + train.getId() + " entre dans le tronconAB");
           return true;
         }
       }
@@ -32,12 +46,13 @@ public class TronconAB {
   public static boolean canExit(Train train) {
     if (train.getClass().getSimpleName().equals("TrainA")) {
       if (nextTrainToExitA == train.getId()) {
-        System.out.println("Train A-" + train.getId() + " sort du tronconAB");
+        System.out.println("TrainA - " + train.getId() + " sort du tronconAB");
         return true;
       }
     } else {
       if (nextTrainToExitB == train.getId()) {
-        System.out.println("Train B-" + train.getId() + " sort du tronconAB");
+        System.out.println("TrainB - " + train.getId() + " sort du tronconAB");
+        nextBAskedToEnter = false;
         return true;
       }
     }
@@ -87,6 +102,7 @@ public class TronconAB {
       canExit = canExit(train);
       if (canExit) {
         nextTrainToExitB++;
+        
       }
       lockAB.unlock();
     }

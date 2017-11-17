@@ -9,17 +9,25 @@ abstract interface Train extends Runnable {
   }
 
   default void checkDelay(Train train) throws InterruptedException {
+	  
     if (randomBoolean()) {
-      System.out.println(train.getClass().getSimpleName() + " - " + train.getId() + " a un dÃ©lai de 1 seconde");
+    	if(train.getClass().getSimpleName().equals("TrainB") && (train.getId() == 0)) {
+  		  TronconAB.cancelBFirstToStart();
+  		
+  	  }
+      System.out.println(train.getClass().getSimpleName() + " - " + train.getId() + " a un délai de 1 seconde");
       Thread.sleep(1000);
     }
   }
 
   default void checkBroken(Train train) throws InterruptedException {
     if (randomBoolean()) {
+    	if(train.getClass().getSimpleName().equals("TrainB") && (train.getId() == 0)) {
+    		  TronconAB.cancelBFirstToStart();
+    	  }
       System.out.println(train.getClass().getSimpleName() + " - " + train.getId() + " est en panne.");
       Thread.sleep(2000);
-      System.out.println(train.getClass().getSimpleName() + " - " + train.getId() + " est rÃ©parÃ©");
+      System.out.println(train.getClass().getSimpleName() + " - " + train.getId() + " est réparé");
       Thread.sleep(2000);
     }
   }
