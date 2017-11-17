@@ -41,6 +41,12 @@ Comme il n'y avait rien de spécifié dans l'énoncé en rapport avec la simulat
 nous avons programmé une fonction aléatoire qui déclanche pour chaque train, selon une probabilité, un délai ou une panne.
 
 
+MOINS DE PRIORITÉ REQ1 POUR TRAIN DE LIGNE A
+Pour donner moins de priorité à l'entrée des train A dans le tronçon partagé AB, nous avons donné la priorité d'entrée au train de ligne B.
+Toutefois, si le trainB-0 tombe en délai ou en panne, les trains A pourrons passer tant et aussi longtemps que ce train B-0 ne sera pas pret.
+Une fois que B-0 fera une demande pour entrer, les trains A cesseront d'entrer et sortiront pour laisser la place aux trainB.
+En cours de route, si un train B (de # 13 par exemple) veut entrer et que des trains A sont sur le tronçonAB, ils cesseront d'entrer et laisseront la 
+place aux trains B jusqu'à ce que ceux-ci soient tous sorti. Cela s'applique pour tous les numéros de train.
 
 
 
