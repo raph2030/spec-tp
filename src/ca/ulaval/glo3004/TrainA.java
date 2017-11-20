@@ -1,5 +1,5 @@
 package ca.ulaval.glo3004;
-
+//Cette classe représente un train d'une ligne A
 public class TrainA implements Runnable, Train {
   private int index;
 
