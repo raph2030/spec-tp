@@ -3,11 +3,12 @@ package ca.ulaval.glo3004;
 import java.util.concurrent.ThreadLocalRandom;
 
 abstract interface Train extends Runnable {
+	//cette fonction permet de générer un boolean de facon aléatoire selon une probabilité
   default boolean randomBoolean() {
     int randomNum = ThreadLocalRandom.current().nextInt(0, 100 + 1);
     return randomNum % 10 == 0;
   }
-
+//Cette fonction permet de générer de façon aléatoire un délai sur un train
   default void checkDelay(Train train) throws InterruptedException {
 	  
     if (randomBoolean()) {
@@ -19,7 +20,7 @@ abstract interface Train extends Runnable {
       Thread.sleep(1000);
     }
   }
-
+//Cette fonction permet de générer de façon aléatoire un bris sur un train
   default void checkBroken(Train train) throws InterruptedException {
     if (randomBoolean()) {
     	if(train.getClass().getSimpleName().equals("TrainB") && (train.getId() == 0)) {

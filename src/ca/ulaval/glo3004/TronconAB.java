@@ -3,7 +3,7 @@ package ca.ulaval.glo3004;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-
+//Cette classe représente le tronçon partagé AB
 public class TronconAB {
   public static final Lock lockAB = new ReentrantLock();
   private static int nextTrainToEnterA = 0;
@@ -17,10 +17,12 @@ public class TronconAB {
   public static void cancelBFirstToStart() {
 	  nextBAskedToEnter = false;
   }
-
+//Cette fonction permet de retourner si le train en paramètre peut entrer dans TronconAB : un train d'une meme ligne ne peut pas en dépasser un autre
+  //Elle s'assure aussi de retourner faux s'il y a deja un ou plusieurs autre train d'une meme ligne sur le tronçon
+  //Elle s'assure aussi de laisser priorité au TrainB pour l'entrer dans le Troncon AB
   private static boolean canEnter(Train train) {
     if (train.getClass().getSimpleName().equals("TrainA")) {
-		if(nextBAskedToEnter) {//faut laisser priorité au Train B qui veut rentrer
+		if(nextBAskedToEnter) {//faut laisser priorité au Train B qui veut entrer
 			return false;
 		}
         if (nextTrainToEnterB == nextTrainToExitB) {
@@ -42,7 +44,7 @@ public class TronconAB {
     }
     return false;
   }
-
+  //Cette fonction permet de retourner si le train en paramètre peut sortir du TronconAB : un train d'une meme ligne ne peut pas en dépasser un autre
   public static boolean canExit(Train train) {
     if (train.getClass().getSimpleName().equals("TrainA")) {
       if (nextTrainToExitA == train.getId()) {
@@ -58,7 +60,7 @@ public class TronconAB {
     }
     return false;
   }
-
+//Cette fonction fait entrer le Train dans le Tronçon lorsque ce sera son tour
   public static void addTrainA(Train train) throws InterruptedException {
     boolean canEnter = false;
     while (!canEnter) {
@@ -70,7 +72,7 @@ public class TronconAB {
       lockAB.unlock();
     }
   }
-
+//Cette fonction fait sortir le Train du Tronçon lorsque ce sera son tour
   public static void removeTrainA(Train train) {
     boolean canExit = false;
     while (!canExit) {
@@ -82,7 +84,7 @@ public class TronconAB {
       lockAB.unlock();
     }
   }
-
+//Cette fonction fait entrer le Train dans le Tronçon lorsque ce sera son tour
   public static void addTrainB(Train train) throws InterruptedException {
     boolean canEnter = false;
     while (!canEnter) {
@@ -94,7 +96,7 @@ public class TronconAB {
       lockAB.unlock();
     }
   }
-
+//Cette fonction fait sortir le Train du Tronçon lorsque ce sera son tour
   public static void removeTrainB(Train train) {
     boolean canExit = false;
     while (!canExit) {

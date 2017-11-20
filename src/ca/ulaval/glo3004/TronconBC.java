@@ -9,7 +9,8 @@ public class TronconBC {
   static private int nextTrainToExitB = 0;
   static private int nextTrainToEnterC = 0;
   static private int nextTrainToExitC = 0;
-
+//Cette fonction permet de retourner si le train en paramètre peut entrer dans TronconBC : un train d'une meme ligne ne peut pas en dépasser un autre
+  //Elle s'assure aussi de retourner faux s'il y a deja un ou plusieurs autre train d'une meme ligne sur le tronçon
   private static boolean canEnter(Train train) {
     if (train.getClass().getSimpleName().equals("TrainB")) {
       if (nextTrainToEnterC == nextTrainToExitC) {
@@ -28,7 +29,8 @@ public class TronconBC {
     }
     return false;
   }
-
+//Cette fonction permet de retourner si le train en paramètre peut sortir du TronconBC : un train d'une meme ligne ne peut pas en dépasser un autre
+  
   private static boolean canExit(Train train) {
     if (train.getClass().getSimpleName().equals("TrainB")) {
       if (nextTrainToExitB == train.getId()) {
@@ -43,7 +45,7 @@ public class TronconBC {
     }
     return false;
   }
-
+//Cette fonction fait entrer le Train dans le Tronçon lorsque ce sera son tour
   public static void addTrainB(Train train) throws InterruptedException {
     boolean canEnter = false;
     while (!canEnter) {
@@ -55,7 +57,7 @@ public class TronconBC {
       lockBC.unlock();
     }
   }
-
+//Cette fonction fait sortir le Train du Tronçon lorsque ce sera son tour
   public static void removeTrainB(Train train) {
     boolean canExit = false;
     while (!canExit) {
@@ -67,7 +69,7 @@ public class TronconBC {
       lockBC.unlock();
     }
   }
-
+//Cette fonction fait entrer le Train dans le Tronçon lorsque ce sera son tour
   public static void addTrainC(Train train) throws InterruptedException {
     boolean canEnter = false;
     while (!canEnter) {
@@ -79,7 +81,7 @@ public class TronconBC {
       lockBC.unlock();
     }
   }
-
+//Cette fonction fait sortir le Train du Tronçon lorsque ce sera son tour
   public static void removeTrainC(Train train) {
     boolean canExit = false;
     while (!canExit) {
